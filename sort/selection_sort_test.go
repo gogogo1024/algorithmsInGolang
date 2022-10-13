@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gogogo1024/algorithmsInGolang/util"
+	"golang.org/x/exp/slices"
 )
 
 func TestSelectSort(t *testing.T) {
@@ -13,7 +13,7 @@ func TestSelectSort(t *testing.T) {
 	sorted := selectionSort(ar1)
 	fmt.Printf("%d", sorted)
 	wanted := []int{14, 23, 35, 61, 175}
-	if !util.CompareEqualSlice(sorted, wanted) {
+	if !slices.Equal(sorted, wanted) {
 		t.Errorf("selectionSort on '%v'; want '%v', got '%v';", ar1, wanted, sorted)
 	}
 }
