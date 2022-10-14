@@ -39,20 +39,23 @@ func TestDijkstra(t *testing.T) {
 	}
 
 	reverse := make(map[string]string)
-	var result string
+	var path string
 
+	weights := 0
 	for key := range parents {
+		weights += graph[parents[key]][key]
 		reverse[parents[key]] = key
 	}
 	key := "start"
 	for {
 		if v, ok := reverse[key]; ok {
-			result += key + "=>" + v + " "
+			path += key + "=>" + v + " "
 			key = v
 		} else {
 			break
 		}
 	}
-	fmt.Printf("path: %#v\n", result)
+	fmt.Printf("path: %#v\n", path)
+	fmt.Printf("weights: %d\n", weights)
 
 }
